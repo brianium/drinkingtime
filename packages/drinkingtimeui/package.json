@@ -77,6 +77,7 @@
     "node": "16.15.1",
     "npm": "8.13.1"
   },
+  "repository": "git://github.com/brianium/drinkingtime",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },

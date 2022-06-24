@@ -1,4 +1,4 @@
-name: jackd-ui release
+name: drinkingtimeui release
 
 on:
   push:

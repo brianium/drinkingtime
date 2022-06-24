@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: packags/drinkingtimeui
+        working-directory: packages/drinkingtimeui
     if: |
       github.event.pull_request.merged &&
       contains(github.event.pull_request.labels.*.name, 'packages:drinkingtimeui')

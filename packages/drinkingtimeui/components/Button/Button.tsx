@@ -10,7 +10,7 @@ export type ButtonProps = {
 
 const styles = StyleSheet.create({
   button: {
-    paddingVertical: 8,
+    paddingVertical: 9,
     paddingHorizontal: 16,
     borderRadius: 4,
     alignSelf: 'flex-start',

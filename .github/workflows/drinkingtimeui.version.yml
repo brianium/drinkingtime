@@ -1,4 +1,4 @@
-name: drinking version increment
+name: drinkingtimeui version increment
 
 on:
   pull_request:

@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "android": "react-native run-android",
-    "build": "npx tsc && npm run build:copy",
+    "build": "npx tsc",
     "build:copy": "cp -R assets dist && cp -R components/Drink/src dist/components/Drink",
     "ios": "react-native run-ios",
     "start": "react-native start",
@@ -16,7 +16,7 @@
     "storybook-watcher": "sb-rn-watcher --config-path .ondevice",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prepare": "rm -rf dist && npm run build -- -p tsconfig.lib.json && mv dist/index.lib.js dist/index.js"
+    "prepare": "rm -rf dist && npm run build -- -p tsconfig.lib.json && npm run build:copy && mv dist/index.lib.js dist/index.js"
   },
   "dependencies": {},
   "devDependencies": {

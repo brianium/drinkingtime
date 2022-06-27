@@ -1,6 +1,5 @@
 {
     "extends": "./tsconfig.json",
-    "files": [
-        "index.lib.tsx"
-    ]
+    "include": ["components/**/*", "screens/**/*", "index.lib.tsx"],
+    "exclude": ["App.tsx"]
 }

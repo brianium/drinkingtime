@@ -1,5 +1,10 @@
 {
     "extends": "./tsconfig.json",
-    "include": ["components/**/*", "screens/**/*", "index.lib.tsx"],
+    "include": [
+        "components/**/*",
+        "screens/**/*",
+        "index.lib.tsx",
+        "react-native.config.js"
+    ],
     "exclude": ["App.tsx"]
 }

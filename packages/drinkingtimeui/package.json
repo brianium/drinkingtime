@@ -83,6 +83,6 @@
     "registry": "https://npm.pkg.github.com"
   },
   "files": [
-    "dist/**/*"
+    "dist"
   ]
 }

@@ -1,19 +1,32 @@
-// stories/MyButton.stories.tsx
+// stories/Button.stories.tsx
 import React from 'react';
+import {StyleSheet} from 'react-native';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
-
-import {MyButton} from './Button';
+import Button from './';
+import SafeAreaView from '../SafeAreaView';
 
 export default {
-  title: 'components/MyButton',
-  component: MyButton,
-} as ComponentMeta<typeof MyButton>;
+  title: 'components/Button',
+  component: Button,
+  argTypes: {
+    onPress: {action: 'pressed'},
+  },
+} as ComponentMeta<typeof Button>;
 
-export const Basic: ComponentStory<typeof MyButton> = args => (
-  <MyButton {...args} />
+export const Basic: ComponentStory<typeof Button> = args => (
+  <SafeAreaView style={[styles.view]}>
+    <Button {...args} />
+  </SafeAreaView>
 );
 
 Basic.args = {
-  text: 'Hello World',
-  color: 'purple',
+  text: 'Start Drinking',
 };
+
+const styles = StyleSheet.create({
+  view: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+});

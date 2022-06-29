@@ -14,6 +14,13 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-DrinkingTime-DrinkingTimeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-DrinkingTime-DrinkingTimeTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		F075812D1A5A4BA5893103A9 /* AbrilFatface-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DD329E94A1A4594895EF002 /* AbrilFatface-Regular.ttf */; };
+		4334F1F7B143401F8FA9E98C /* InriaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78D102B1F0AD40718660E893 /* InriaSans-Bold.ttf */; };
+		A17ADB221086475389D5EFAA /* InriaSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8704CA0B1AD94DE2ABF6A92E /* InriaSans-BoldItalic.ttf */; };
+		7E8A8AE47BB443FEA3206008 /* InriaSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D972C347023D4B5C8CE9FCAC /* InriaSans-Italic.ttf */; };
+		9237D751902142E28B15AA08 /* InriaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 79F6F14258404FD0977C12A3 /* InriaSans-Light.ttf */; };
+		C190CFC2C423491792A402BB /* InriaSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9806C0E43B294BCCB6293CA4 /* InriaSans-LightItalic.ttf */; };
+		D879DF2BC6DF4569BC39D988 /* InriaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF1088288DF64924832FEC97 /* InriaSans-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,13 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = DrinkingTime/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-DrinkingTime-DrinkingTimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrinkingTime-DrinkingTimeTests.release.xcconfig"; path = "Target Support Files/Pods-DrinkingTime-DrinkingTimeTests/Pods-DrinkingTime-DrinkingTimeTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		1DD329E94A1A4594895EF002 /* AbrilFatface-Regular.ttf */ = {isa = PBXFileReference; name = "AbrilFatface-Regular.ttf"; path = "../node_modules/@brianium/drinkingtimeui/dist/assets/fonts/AbrilFatface-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		78D102B1F0AD40718660E893 /* InriaSans-Bold.ttf */ = {isa = PBXFileReference; name = "InriaSans-Bold.ttf"; path = "../node_modules/@brianium/drinkingtimeui/dist/assets/fonts/InriaSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8704CA0B1AD94DE2ABF6A92E /* InriaSans-BoldItalic.ttf */ = {isa = PBXFileReference; name = "InriaSans-BoldItalic.ttf"; path = "../node_modules/@brianium/drinkingtimeui/dist/assets/fonts/InriaSans-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D972C347023D4B5C8CE9FCAC /* InriaSans-Italic.ttf */ = {isa = PBXFileReference; name = "InriaSans-Italic.ttf"; path = "../node_modules/@brianium/drinkingtimeui/dist/assets/fonts/InriaSans-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		79F6F14258404FD0977C12A3 /* InriaSans-Light.ttf */ = {isa = PBXFileReference; name = "InriaSans-Light.ttf"; path = "../node_modules/@brianium/drinkingtimeui/dist/assets/fonts/InriaSans-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9806C0E43B294BCCB6293CA4 /* InriaSans-LightItalic.ttf */ = {isa = PBXFileReference; name = "InriaSans-LightItalic.ttf"; path = "../node_modules/@brianium/drinkingtimeui/dist/assets/fonts/InriaSans-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		EF1088288DF64924832FEC97 /* InriaSans-Regular.ttf */ = {isa = PBXFileReference; name = "InriaSans-Regular.ttf"; path = "../node_modules/@brianium/drinkingtimeui/dist/assets/fonts/InriaSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +136,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				E566F96F481E489F967287B0 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +162,21 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		E566F96F481E489F967287B0 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				1DD329E94A1A4594895EF002 /* AbrilFatface-Regular.ttf */,
+				78D102B1F0AD40718660E893 /* InriaSans-Bold.ttf */,
+				8704CA0B1AD94DE2ABF6A92E /* InriaSans-BoldItalic.ttf */,
+				D972C347023D4B5C8CE9FCAC /* InriaSans-Italic.ttf */,
+				79F6F14258404FD0977C12A3 /* InriaSans-Light.ttf */,
+				9806C0E43B294BCCB6293CA4 /* InriaSans-LightItalic.ttf */,
+				EF1088288DF64924832FEC97 /* InriaSans-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +274,13 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				F075812D1A5A4BA5893103A9 /* AbrilFatface-Regular.ttf in Resources */,
+				4334F1F7B143401F8FA9E98C /* InriaSans-Bold.ttf in Resources */,
+				A17ADB221086475389D5EFAA /* InriaSans-BoldItalic.ttf in Resources */,
+				7E8A8AE47BB443FEA3206008 /* InriaSans-Italic.ttf in Resources */,
+				9237D751902142E28B15AA08 /* InriaSans-Light.ttf in Resources */,
+				C190CFC2C423491792A402BB /* InriaSans-LightItalic.ttf in Resources */,
+				D879DF2BC6DF4569BC39D988 /* InriaSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

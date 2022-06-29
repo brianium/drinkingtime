@@ -3,12 +3,12 @@
             [reagent.react-native :as rn]
             ["@brianium/drinkingtimeui" :as ui]))
 
-(def button (r/adapt-react-class ui/MyButton))
+(def button (r/adapt-react-class ui/Button))
+
+(def home-screen (r/adapt-react-class ui/HomeScreen))
 
 (defn hello []
-  [rn/view {:style {:flex 1 :align-items "center" :justify-content "center"}}
-   [button {:color "purple" :text "boop boop boop beep"}]
-   [rn/text {:style {:font-size 50}} "Hello Krell!"]])
+  [home-screen {:on-button-press #(.log js/console "pressed")}])
 
 (defn ^:export -main [& args]
   (r/as-element [hello]))

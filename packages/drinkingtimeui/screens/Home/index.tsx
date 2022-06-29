@@ -7,7 +7,7 @@ import Drink, {DrinkType, Size} from '../../components/Drink';
 import colors from '../../lib/colors';
 
 interface Props {
-  onButtonPress: () => void
+  onButtonPress: () => void;
 }
 
 const Home = (props: Props) => (

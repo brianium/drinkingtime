@@ -1,14 +1,10 @@
 (ns drinking-time.core
   (:require [reagent.core :as r]
-            [reagent.react-native :as rn]
-            ["@brianium/drinkingtimeui" :as ui]))
+            [drinking-time.ui :as ui]))
 
-(def button (r/adapt-react-class ui/Button))
+(defn app []
+  [ui/container
+   [ui/home-screen {:on-button-press #(.log js/console "pressed")}]])
 
-(def home-screen (r/adapt-react-class ui/HomeScreen))
-
-(defn hello []
-  [home-screen {:on-button-press #(.log js/console "pressed")}])
-
-(defn ^:export -main [& args]
-  (r/as-element [hello]))
+(defn ^:export -main [& _]
+  (r/as-element [app]))

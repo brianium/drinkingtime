@@ -38,6 +38,7 @@ const getStories = () => {
     require("../components/Text/Text.stories.tsx"),
     require("../components/TextInput/TextInput.stories.tsx"),
     require("../screens/Home/Home.stories.tsx"),
+    require("../screens/User/User.stories.tsx"),
   ];
 };
 

@@ -19,8 +19,8 @@ export enum Size {
 }
 
 export enum State {
-  default = 'default',
-  error = 'error',
+  Default = 'default',
+  Error = 'error',
 }
 
 interface Props extends TextInputProps {
@@ -58,7 +58,7 @@ const TextInput = (props: Props) => {
         style={[
           controlStyles,
           size === Size.Large ? styles.controlLarge : styles.controlSmall,
-          state === State.default ? styles.controlDefault : styles.controlError,
+          state === State.Default ? styles.controlDefault : styles.controlError,
         ]}
         onPressIn={focusInput}>
         <View
@@ -83,7 +83,7 @@ const TextInput = (props: Props) => {
         <Text
           style={[
             styles.message,
-            state === State.default
+            state === State.Default
               ? styles.messageDefault
               : styles.messageError,
             labelSizeStyle,
@@ -97,7 +97,7 @@ const TextInput = (props: Props) => {
 
 TextInput.defaultProps = {
   size: Size.Large,
-  state: State.default,
+  state: State.Default,
 };
 
 const styles = StyleSheet.create({

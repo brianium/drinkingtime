@@ -35,7 +35,7 @@ LargeTextInputWithMessage.args = {
   unit: 'lbs',
   value: '193',
   message: 'Weight must be greater than 0',
-  state: State.default,
+  state: State.Default,
 };
 
 export const SmallTextInput: ComponentStory<typeof TextInput> = args => (

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, ViewProps} from 'react-native';
 import Text from '../Text';
 import colors from '../../lib/colors';
 
@@ -8,25 +8,27 @@ export enum Type {
   Danger = 'danger',
 }
 
-interface Props {
+interface Props extends ViewProps {
   children: string;
   type?: Type;
 }
 
 const Info = (props: Props) => {
-  const {type} = props;
+  const {type, children, ...viewProps} = props;
   return (
     <View
+      {...viewProps}
       style={[
         styles.view,
         type === Type.Danger ? styles.dangerView : styles.defaultView,
+        props.style,
       ]}>
       <Text
         style={[
           styles.text,
           type === Type.Danger ? styles.dangerText : styles.defaultText,
         ]}>
-        {props.children}
+        {children}
       </Text>
     </View>
   );

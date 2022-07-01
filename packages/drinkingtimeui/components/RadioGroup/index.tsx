@@ -3,6 +3,7 @@ import {
   Pressable,
   StyleSheet,
   View,
+  ViewProps,
   UIManager,
   Platform,
   LayoutAnimation,
@@ -48,16 +49,16 @@ export const Radio = (props: RadioProps) => {
 
 type Options = Record<string, string>;
 
-interface Props {
+interface Props extends ViewProps {
   onChange: (value: string) => void;
   options: Options;
   value: string;
 }
 
 const RadioGroup = (props: Props) => {
-  const {value, onChange, options} = props;
+  const {value, onChange, options, ...viewProps} = props;
   return (
-    <View style={styles.radioGroup}>
+    <View {...viewProps} style={[styles.radioGroup, viewProps.style]}>
       {Object.keys(options).map(v => (
         <Radio
           isChecked={value === v}

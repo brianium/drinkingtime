@@ -34,6 +34,7 @@ const getStories = () => {
     require("../components/Button/Button.stories.tsx"),
     require("../components/Drink/Drink.stories.tsx"),
     require("../components/Info/Info.stories.tsx"),
+    require("../components/RadioGroup/RadioGroup.stories.tsx"),
     require("../components/Text/Text.stories.tsx"),
     require("../components/TextInput/TextInput.stories.tsx"),
     require("../screens/Home/Home.stories.tsx"),

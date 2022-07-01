@@ -1,14 +1,22 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {
+  NativeSyntheticEvent,
+  StyleSheet,
+  TextInputEndEditingEventData,
+  View,
+} from 'react-native';
+import AppHeader from '../../components/AppHeader';
 import Info from '../../components/Info';
 import RadioGroup from '../../components/RadioGroup';
 import SafeAreaView from '../../components/SafeAreaView';
-import Text, {TextStyle} from '../../components/Text';
+import Text from '../../components/Text';
 import TextInput, {State as InputState} from '../../components/TextInput';
 import Button from '../../components/Button';
 import colors from '../../lib/colors';
+import {withActionSheet} from '../withActionSheet';
+import {useActionSheet} from '@expo/react-native-action-sheet';
 
-type EventId = 'gender' | 'weight';
+type EventId = 'gender' | 'weight' | 'navigate';
 
 type Event = [EventId, string];
 
@@ -31,17 +39,39 @@ const genderOptions = {
   female: 'Female',
 };
 
+const actionOptions = ['Drink', 'Cancel'];
+const cancelButtonIndex = 1;
+
 const User = (props: Props) => {
   const {onChange, onButtonPress, gender, weight, screenState} = props;
+  const {showActionSheetWithOptions} = useActionSheet();
 
   const handleChange = (id: EventId) => (value: string) =>
     onChange([id, value]);
 
+  const handleEndEditing =
+    (id: EventId) => (e: NativeSyntheticEvent<TextInputEndEditingEventData>) =>
+      onChange([id, e.nativeEvent.text]);
+
+  const handleMenuPress = (id: EventId) => () =>
+    showActionSheetWithOptions(
+      {
+        options: actionOptions,
+        cancelButtonIndex,
+      },
+      buttonIndex => {
+        if (typeof buttonIndex === 'number') {
+          onChange([id, actionOptions[buttonIndex]]);
+        }
+      },
+    );
+
   return (
     <SafeAreaView style={styles.view}>
-      <Text style={styles.title} textStyle={TextStyle.Title}>
-        Drinking Time
-      </Text>
+      <AppHeader
+        isMenuShown={screenState === ScreenState.Default}
+        onPressMenu={handleMenuPress('navigate')}
+      />
       {screenState === ScreenState.FirstVisit ? (
         <Info style={styles.info}>
           It looks like this is your first time getting lity city with Drinking
@@ -61,14 +91,16 @@ const User = (props: Props) => {
       <TextInput
         label="Weight"
         message={
-          screenState === ScreenState.Error && 'Weight must be greater than 0'
+          screenState === ScreenState.Error
+            ? 'Weight must be greater than 0'
+            : undefined
         }
-        onChangeText={handleChange('weight')}
         state={
           screenState === ScreenState.Error
             ? InputState.Error
             : InputState.Default
         }
+        onEndEditing={handleEndEditing('weight')}
         unit="lbs"
         value={`${weight}`}
       />
@@ -103,11 +135,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 50,
   },
-  title: {
-    color: colors.black,
-    fontSize: 32,
-    marginTop: 6,
-  },
   view: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -115,4 +142,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default User;
+export default withActionSheet(User);

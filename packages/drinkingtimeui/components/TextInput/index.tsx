@@ -18,18 +18,25 @@ export enum Size {
   Small = 'small',
 }
 
+export enum State {
+  default = 'default',
+  error = 'error',
+}
+
 interface Props extends TextInputProps {
   style?: StyleProp<ViewStyle> | undefined;
   inputStyle?: StyleProps<TextStyle> | undefined;
   label: string;
   size?: Size;
+  state?: State;
   unit?: string | undefined;
 }
 
 const TextInput = (props: Props) => {
   const nativeInput = useRef(null);
-  const {style, inputStyle, unit, label, size, ...inputProps} = props;
-  const containerStyles = mergeStyles([styles.container, style]);
+  const {style, inputStyle, unit, label, size, message, state, ...inputProps} =
+    props;
+  const controlStyles = mergeStyles([styles.control, style]);
   const inputStyles = mergeStyles([styles.input], inputStyle);
 
   const focusInput = () => {
@@ -39,58 +46,78 @@ const TextInput = (props: Props) => {
   const inputSizeStyle =
     size === Size.Large ? styles.inputLarge : styles.inputSmall;
 
+  const labelSizeStyle =
+    size === Size.Large ? styles.labelLarge : styles.labelSmall;
+
   return (
-    <Pressable
-      style={[
-        containerStyles,
-        size === Size.Large ? styles.containerLarge : styles.containerSmall,
-      ]}
-      onPressIn={focusInput}>
-      <View
+    <View style={[styles.container]}>
+      <Pressable
         style={[
-          styles.labelContainer,
-          size === Size.Large
-            ? styles.labelContainerLarge
-            : styles.labelContainerSmall,
-        ]}>
+          controlStyles,
+          size === Size.Large ? styles.controlLarge : styles.controlSmall,
+          state === State.default ? styles.controlDefault : styles.controlError,
+        ]}
+        onPressIn={focusInput}>
+        <View
+          style={[
+            styles.labelContainer,
+            size === Size.Large
+              ? styles.labelContainerLarge
+              : styles.labelContainerSmall,
+          ]}>
+          <Text style={[styles.label, labelSizeStyle]}>{label}</Text>
+        </View>
+        <BaseTextInput
+          {...inputProps}
+          ref={nativeInput}
+          style={[inputStyles, inputSizeStyle]}
+        />
+        {unit ? (
+          <Text style={[styles.unitText, inputSizeStyle]}>{unit}</Text>
+        ) : null}
+      </Pressable>
+      {message && (
         <Text
           style={[
-            styles.label,
-            size === Size.Large ? styles.labelLarge : styles.labelSmall,
+            styles.message,
+            state === State.default
+              ? styles.messageDefault
+              : styles.messageError,
+            labelSizeStyle,
           ]}>
-          {label}
+          {message}
         </Text>
-      </View>
-      <BaseTextInput
-        {...inputProps}
-        ref={nativeInput}
-        style={[inputStyles, inputSizeStyle]}
-      />
-      {unit ? (
-        <Text style={[styles.unitText, inputSizeStyle]}>{unit}</Text>
-      ) : null}
-    </Pressable>
+      )}
+    </View>
   );
 };
 
 TextInput.defaultProps = {
   size: Size.Large,
+  state: State.default,
 };
 
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
+  },
+  control: {
     alignItems: 'center',
-    borderColor: colors.primary,
     borderRadius: 6,
     borderWidth: 2,
-    width: '100%',
     flexDirection: 'row',
   },
-  containerLarge: {
+  controlDefault: {
+    borderColor: colors.primary,
+  },
+  controlError: {
+    borderColor: colors.danger,
+  },
+  controlLarge: {
     paddingHorizontal: 19,
     paddingVertical: 16,
   },
-  containerSmall: {
+  controlSmall: {
     padding: 12,
   },
   input: {
@@ -134,6 +161,15 @@ const styles = StyleSheet.create({
     left: 10,
     paddingVertical: 5,
     paddingHorizontal: 8,
+  },
+  message: {
+    marginTop: 6,
+  },
+  messageDefault: {
+    color: colors.grey,
+  },
+  messageError: {
+    color: colors.danger,
   },
 });
 

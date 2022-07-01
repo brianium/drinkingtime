@@ -2,7 +2,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
-import TextInput, {Size} from './';
+import TextInput, {Size, State} from './';
 import SafeAreaView from '../SafeAreaView';
 
 export default {
@@ -10,16 +10,32 @@ export default {
   component: TextInput,
 } as ComponentMeta<typeof TextInput>;
 
-export const BasicTextInput: ComponentStory<typeof TextInput> = args => (
+export const LargeTextInput: ComponentStory<typeof TextInput> = args => (
   <SafeAreaView style={[styles.view]}>
     <TextInput {...args} />
   </SafeAreaView>
 );
 
-BasicTextInput.args = {
+LargeTextInput.args = {
   label: 'Weight',
   unit: 'lbs',
   value: '193',
+};
+
+export const LargeTextInputWithMessage: ComponentStory<
+  typeof TextInput
+> = args => (
+  <SafeAreaView style={[styles.view]}>
+    <TextInput {...args} />
+  </SafeAreaView>
+);
+
+LargeTextInputWithMessage.args = {
+  label: 'Weight',
+  unit: 'lbs',
+  value: '193',
+  message: 'Weight must be greater than 0',
+  state: State.default,
 };
 
 export const SmallTextInput: ComponentStory<typeof TextInput> = args => (

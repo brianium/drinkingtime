@@ -14,24 +14,20 @@ interface Props {
 }
 
 const Info = (props: Props) => {
-  const viewStyles = [styles.view];
-  const textStyles = [styles.text];
-
-  switch (props.type) {
-    case Type.Danger: {
-      viewStyles.push(styles.dangerView);
-      textStyles.push(styles.dangerText);
-      break;
-    }
-    default: {
-      viewStyles.push(styles.defaultView);
-      textStyles.push(styles.defaultText);
-    }
-  }
-
+  const {type} = props;
   return (
-    <View style={viewStyles}>
-      <Text style={textStyles}>{props.children}</Text>
+    <View
+      style={[
+        styles.view,
+        type === Type.Danger ? styles.dangerView : styles.defaultView,
+      ]}>
+      <Text
+        style={[
+          styles.text,
+          type === Type.Danger ? styles.dangerText : styles.defaultText,
+        ]}>
+        {props.children}
+      </Text>
     </View>
   );
 };

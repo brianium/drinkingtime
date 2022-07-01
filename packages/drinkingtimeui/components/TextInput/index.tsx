@@ -25,22 +25,25 @@ export enum State {
 
 interface Props extends TextInputProps {
   style?: StyleProp<ViewStyle> | undefined;
-  inputStyle?: StyleProps<TextStyle> | undefined;
+  inputStyle?: StyleProp<TextStyle> | undefined;
   label: string;
-  size?: Size;
-  state?: State;
+  size?: Size | undefined;
+  state?: State | undefined;
   unit?: string | undefined;
+  message?: string | undefined;
 }
 
 const TextInput = (props: Props) => {
-  const nativeInput = useRef(null);
+  const nativeInput = useRef<null | BaseTextInput>(null);
   const {style, inputStyle, unit, label, size, message, state, ...inputProps} =
     props;
   const controlStyles = mergeStyles([styles.control, style]);
   const inputStyles = mergeStyles([styles.input], inputStyle);
 
   const focusInput = () => {
-    nativeInput.current.focus();
+    if (nativeInput.current) {
+      nativeInput.current.focus();
+    }
   };
 
   const inputSizeStyle =

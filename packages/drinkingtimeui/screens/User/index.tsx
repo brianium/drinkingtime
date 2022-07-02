@@ -105,7 +105,11 @@ const User = (props: Props) => {
         value={`${weight}`}
       />
       <View style={styles.button}>
-        <Button text="Start Drinking" onPress={onButtonPress} />
+        <Button
+          disabled={screenState === ScreenState.Error}
+          onPress={onButtonPress}
+          text="Start Drinking"
+        />
       </View>
     </SafeAreaView>
   );

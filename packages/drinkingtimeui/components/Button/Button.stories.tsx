@@ -23,6 +23,17 @@ Basic.args = {
   text: 'Start Drinking',
 };
 
+export const DisabledButton: ComponentStory<typeof Button> = args => (
+  <SafeAreaView style={[styles.view]}>
+    <Button {...args} />
+  </SafeAreaView>
+);
+
+DisabledButton.args = {
+  disabled: true,
+  text: 'Start Drinking',
+};
+
 const styles = StyleSheet.create({
   view: {
     alignItems: 'center',

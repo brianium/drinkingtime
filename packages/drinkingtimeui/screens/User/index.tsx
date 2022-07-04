@@ -23,13 +23,13 @@ type Event = [EventId, string];
 export enum ScreenState {
   Default = 'default',
   Error = 'error',
-  FirstVisit = 'first-visit',
 }
 
 interface Props {
+  gender: 'male' | 'female';
+  isFirstVisit?: boolean;
   onButtonPress: () => void;
   onChange: (event: Event) => void;
-  gender: 'male' | 'female';
   screenState?: ScreenState | undefined;
   weight: number;
 }
@@ -43,15 +43,12 @@ const actionOptions = ['Drink', 'Cancel'];
 const cancelButtonIndex = 1;
 
 const User = (props: Props) => {
-  const {onChange, onButtonPress, gender, weight, screenState} = props;
+  const {onChange, onButtonPress, gender, weight, screenState, isFirstVisit} =
+    props;
   const {showActionSheetWithOptions} = useActionSheet();
 
   const handleChange = (id: EventId) => (value: string) =>
     onChange([id, value]);
-
-  const handleEndEditing =
-    (id: EventId) => (e: NativeSyntheticEvent<TextInputEndEditingEventData>) =>
-      onChange([id, e.nativeEvent.text]);
 
   const handleMenuPress = (id: EventId) => () =>
     showActionSheetWithOptions(
@@ -72,7 +69,7 @@ const User = (props: Props) => {
         isMenuShown={screenState === ScreenState.Default}
         onPressMenu={handleMenuPress('navigate')}
       />
-      {screenState === ScreenState.FirstVisit ? (
+      {isFirstVisit ? (
         <Info style={styles.info}>
           It looks like this is your first time getting lity city with Drinking
           Time! In order to properly calculate your blood alcohol content (BAC),
@@ -100,7 +97,7 @@ const User = (props: Props) => {
             ? InputState.Error
             : InputState.Default
         }
-        onEndEditing={handleEndEditing('weight')}
+        onChangeText={handleChange('weight')}
         unit="lbs"
         value={`${weight}`}
       />
@@ -116,6 +113,7 @@ const User = (props: Props) => {
 };
 
 User.defaultProps = {
+  isFirstVisit: false,
   screenState: ScreenState.Default,
 };
 

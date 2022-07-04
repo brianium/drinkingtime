@@ -26,9 +26,9 @@ export const FirstVisitUserScreen: ComponentStory<typeof User> = args => (
 );
 
 FirstVisitUserScreen.args = {
+  isFirstVisit: true,
   gender: 'male',
   weight: 193,
-  screenState: ScreenState.FirstVisit,
 };
 
 export const ErrorUserScreen: ComponentStory<typeof User> = args => (

@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     justifyContent: 'flex-end',
+    marginBottom: 83,
     width: '100%',
   },
   drink: {
@@ -37,9 +38,9 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   view: {
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 83,
   },
 });
 

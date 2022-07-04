@@ -123,6 +123,7 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     justifyContent: 'flex-end',
+    marginBottom: 83,
     width: '100%',
   },
   info: {
@@ -140,9 +141,9 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   view: {
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 83,
   },
 });
 

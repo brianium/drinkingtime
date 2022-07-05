@@ -30,6 +30,14 @@
   [:> ui/HomeScreen
    {:on-button-press #(rf/dispatch [:evt.home/start-drinking])}])
 
-(defn user-screen
-  [props]
-  [:> ui/UserScreen props])
+(defn user-screen [_]
+  (let [{:keys [weight gender screen-state is-first-visit]} @(rf/subscribe [:subs.screen/user])]
+    [:> ui/UserScreen
+     {:gender          gender
+      :weight          weight
+      :is-first-visit  is-first-visit
+      :screen-state    screen-state
+      :on-button-press #(rf/dispatch [:evt.user/update {:gender gender :weight (js/parseInt weight)}])
+      :on-change       #(rf/dispatch [:evt.user/change (array-seq %)])}]))
+
+#_(rf/dispatch [:evt.navigation/navigate "Home"])

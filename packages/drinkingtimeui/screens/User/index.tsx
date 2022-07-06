@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  NativeSyntheticEvent,
-  StyleSheet,
-  TextInputEndEditingEventData,
-  View,
-} from 'react-native';
+import {StyleSheet, View, KeyboardAvoidingView, Platform} from 'react-native';
 import AppHeader from '../../components/AppHeader';
 import Info from '../../components/Info';
 import RadioGroup from '../../components/RadioGroup';
@@ -16,20 +11,24 @@ import colors from '../../lib/colors';
 import {withActionSheet} from '../withActionSheet';
 import {useActionSheet} from '@expo/react-native-action-sheet';
 
-type EventId = 'gender' | 'weight' | 'navigate';
+type ChangeEventId = 'gender' | 'weight';
 
-type Event = [EventId, string];
+type ChangeEvent = [ChangeEventId, string];
 
 export enum ScreenState {
   Default = 'default',
   Error = 'error',
 }
 
+const actionOptions = ['Drink', 'Cancel'] as const;
+const cancelButtonIndex = 1;
+
 interface Props {
   gender: 'male' | 'female';
   isFirstVisit?: boolean;
   onButtonPress: () => void;
-  onChange: (event: Event) => void;
+  onChange: (event: ChangeEvent) => void;
+  onNavigate: (id: typeof actionOptions[number]) => void;
   screenState?: ScreenState | undefined;
   weight: number;
 }
@@ -39,18 +38,22 @@ const genderOptions = {
   female: 'Female',
 };
 
-const actionOptions = ['Drink', 'Cancel'];
-const cancelButtonIndex = 1;
-
 const User = (props: Props) => {
-  const {onChange, onButtonPress, gender, weight, screenState, isFirstVisit} =
-    props;
+  const {
+    onChange,
+    onNavigate,
+    onButtonPress,
+    gender,
+    weight,
+    screenState,
+    isFirstVisit,
+  } = props;
   const {showActionSheetWithOptions} = useActionSheet();
 
   const handleChange = (id: EventId) => (value: string) =>
     onChange([id, value]);
 
-  const handleMenuPress = (id: EventId) => () =>
+  const handleMenuPress = () =>
     showActionSheetWithOptions(
       {
         options: actionOptions,
@@ -58,57 +61,61 @@ const User = (props: Props) => {
       },
       buttonIndex => {
         if (typeof buttonIndex === 'number') {
-          onChange([id, actionOptions[buttonIndex]]);
+          onNavigate(actionOptions[buttonIndex]);
         }
       },
     );
 
   return (
-    <SafeAreaView style={styles.view}>
-      <AppHeader
-        isMenuShown={screenState === ScreenState.Default}
-        onPressMenu={handleMenuPress('navigate')}
-      />
-      {isFirstVisit ? (
-        <Info style={styles.info}>
-          It looks like this is your first time getting lity city with Drinking
-          Time! In order to properly calculate your blood alcohol content (BAC),
-          we need to gather a little information about you first. We won’t use
-          this information for anything other than calculating your BAC.
-        </Info>
-      ) : (
-        <Text style={styles.text}>User settings</Text>
-      )}
-      <RadioGroup
-        options={genderOptions}
-        onChange={handleChange('gender')}
-        style={[styles.radioGroup]}
-        value={gender}
-      />
-      <TextInput
-        label="Weight"
-        message={
-          screenState === ScreenState.Error
-            ? 'Weight must be greater than 0'
-            : undefined
-        }
-        state={
-          screenState === ScreenState.Error
-            ? InputState.Error
-            : InputState.Default
-        }
-        onChangeText={handleChange('weight')}
-        unit="lbs"
-        value={`${weight}`}
-      />
-      <View style={styles.button}>
-        <Button
-          disabled={screenState === ScreenState.Error}
-          onPress={onButtonPress}
-          text="Start Drinking"
+    <KeyboardAvoidingView behavior="height" style={styles.container}>
+      <SafeAreaView style={styles.view}>
+        <AppHeader
+          isMenuShown={screenState === ScreenState.Default && !isFirstVisit}
+          onPressMenu={handleMenuPress}
         />
-      </View>
-    </SafeAreaView>
+        {isFirstVisit ? (
+          <Info style={styles.info}>
+            It looks like this is your first time getting lity city with
+            Drinking Time! In order to properly calculate your blood alcohol
+            content (BAC), we need to gather a little information about you
+            first. We won’t use this information for anything other than
+            calculating your BAC.
+          </Info>
+        ) : (
+          <Text style={styles.text}>User settings</Text>
+        )}
+        <RadioGroup
+          options={genderOptions}
+          onChange={handleChange('gender')}
+          style={[styles.radioGroup]}
+          value={gender}
+        />
+        <TextInput
+          keyboardType="numeric"
+          label="Weight"
+          message={
+            screenState === ScreenState.Error
+              ? 'Weight must be greater than 0'
+              : undefined
+          }
+          state={
+            screenState === ScreenState.Error
+              ? InputState.Error
+              : InputState.Default
+          }
+          onChangeText={handleChange('weight')}
+          unit="lbs"
+          value={`${weight}`}
+        />
+        <View style={styles.button}>
+          <Button
+            disabled={screenState === ScreenState.Error}
+            onPress={onButtonPress}
+            text="Start Drinking"
+          />
+        </View>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -123,6 +130,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     marginBottom: 83,
     width: '100%',
+  },
+  container: {
+    flex: 1,
   },
   info: {
     marginTop: 54,

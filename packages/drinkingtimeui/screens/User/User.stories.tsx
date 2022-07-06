@@ -9,6 +9,7 @@ export default {
   argTypes: {
     onButtonPress: {action: 'pressed'},
     onChange: {action: 'changed'},
+    onNavigate: {action: 'navigated'},
   },
 } as ComponentMeta<typeof User>;
 

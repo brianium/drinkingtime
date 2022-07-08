@@ -7,7 +7,7 @@ export enum TextStyle {
   Title = 'title',
 }
 
-interface Props extends TextProps {
+export interface Props extends TextProps {
   textStyle?: TextStyle;
 }
 

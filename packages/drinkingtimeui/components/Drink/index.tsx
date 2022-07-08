@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   Image,
-  TouchableHighlight,
-  TouchableHighlightProps,
+  View,
+  ViewProps,
   StyleSheet,
 } from 'react-native';
 import colors from '../../lib/colors';
@@ -19,7 +19,12 @@ export enum Size {
   Small = 'small',
 }
 
-interface Props extends TouchableHighlightProps {
+export const dimensions = {
+  [Size.Small]: 52,
+  [Size.Large]: 206,
+};
+
+interface Props extends ViewProps {
   type: DrinkType;
   size: Size;
 }
@@ -56,13 +61,13 @@ const DrinkImage = (props: Props) => {
 
 const Drink = (props: Props) => {
   const drinkStyles = styles.merge(
-    [highlightStyles.all, highlightStyles[props.size]],
+    [viewStyles.all, viewStyles[props.size]],
     props.style,
   );
   return (
-    <TouchableHighlight style={drinkStyles}>
+    <View style={drinkStyles}>
       <DrinkImage {...props} />
-    </TouchableHighlight>
+    </View>
   );
 };
 
@@ -117,21 +122,21 @@ const wineStyles = StyleSheet.create({
   },
 });
 
-const highlightStyles = StyleSheet.create({
+const viewStyles = StyleSheet.create({
   all: {
     alignItems: 'center',
     backgroundColor: colors.primary,
     justifyContent: 'center',
   },
   [Size.Large]: {
-    borderRadius: 103,
-    height: 206,
-    width: 206,
+    borderRadius: dimensions[Size.Large] / 2,
+    height: dimensions[Size.Large],
+    width: dimensions[Size.Large],
   },
   [Size.Small]: {
-    borderRadius: 26,
-    height: 52,
-    width: 52,
+    borderRadius: dimensions[Size.Small] / 2,
+    height: dimensions[Size.Small],
+    width: dimensions[Size.Small],
   },
 });
 

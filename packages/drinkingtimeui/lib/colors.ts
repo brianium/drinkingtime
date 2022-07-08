@@ -1,6 +1,7 @@
 export default {
   black: '#353535',
   grey: '#898989',
+  lightGrey: '#d6d6d6',
   darkGrey: '#565656',
   danger: '#F2532C',
   primary: '#9917FF',

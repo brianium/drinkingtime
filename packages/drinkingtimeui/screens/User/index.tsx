@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, KeyboardAvoidingView, Platform} from 'react-native';
+import {StyleSheet, View, KeyboardAvoidingView} from 'react-native';
 import AppHeader from '../../components/AppHeader';
 import Info from '../../components/Info';
 import RadioGroup from '../../components/RadioGroup';
@@ -20,7 +20,7 @@ export enum ScreenState {
   Error = 'error',
 }
 
-const actionOptions = ['Drink', 'Cancel'] as const;
+const actionOptions = ['Drink', 'Cancel'];
 const cancelButtonIndex = 1;
 
 interface Props {
@@ -50,7 +50,7 @@ const User = (props: Props) => {
   } = props;
   const {showActionSheetWithOptions} = useActionSheet();
 
-  const handleChange = (id: EventId) => (value: string) =>
+  const handleChange = (id: ChangeEventId) => (value: string) =>
     onChange([id, value]);
 
   const handleMenuPress = () =>

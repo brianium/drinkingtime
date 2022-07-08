@@ -6,7 +6,7 @@
   "scripts": {
     "android": "react-native run-android",
     "build": "npx tsc",
-    "build:copy": "cp -R assets dist && cp -R components/Drink/src dist/components/Drink",
+    "build:copy": "cp -R assets dist && cp -R components/Drink/src dist/components/Drink && cp -R components/AddDrink/src dist/components/AddDrink",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",

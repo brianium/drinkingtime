@@ -1,3 +1,4 @@
+export {default as AddDrink} from './components/AddDrink';
 export {default as AppHeader} from './components/AppHeader';
 export {default as Button} from './components/Button';
 export {default as Drink} from './components/Drink';

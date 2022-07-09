@@ -1,4 +1,3 @@
-// stories/AddDrink.stories.tsx
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {ComponentMeta, ComponentStory} from '@storybook/react';

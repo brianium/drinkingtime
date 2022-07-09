@@ -1,7 +1,7 @@
 export {default as AddDrink} from './components/AddDrink';
 export {default as AppHeader} from './components/AppHeader';
 export {default as Button} from './components/Button';
-export {default as Drink} from './components/Drink';
+export {Image as DrinkImage} from './components/Drink';
 export {default as Info} from './components/Info';
 export {default as Link} from './components/Link';
 export {default as RadioGroup} from './components/RadioGroup';

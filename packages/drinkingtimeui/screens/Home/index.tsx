@@ -3,7 +3,11 @@ import {StyleSheet, View} from 'react-native';
 import SafeAreaView from '../../components/SafeAreaView';
 import Text, {TextStyle} from '../../components/Text';
 import Button from '../../components/Button';
-import Drink, {DrinkType, Size} from '../../components/Drink';
+import {
+  DrinkType,
+  DrinkSize,
+  Image as DrinkImage,
+} from '../../components/Drink';
 import colors from '../../lib/colors';
 
 interface Props {
@@ -12,7 +16,11 @@ interface Props {
 
 const Home = (props: Props) => (
   <SafeAreaView style={styles.view}>
-    <Drink size={Size.Large} style={styles.drink} type={DrinkType.Beer} />
+    <DrinkImage
+      size={DrinkSize.Large}
+      style={styles.drink}
+      type={DrinkType.Beer}
+    />
     <Text style={styles.title} textStyle={TextStyle.Title}>
       Drinking Time
     </Text>

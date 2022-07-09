@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button';
 import Controls from './Controls';
-import {Drink} from './types';
+import {Drink} from '../Drink';
 
 type PressEvent = ['add', Drink] | ['focus', boolean];
 

@@ -1,7 +1,12 @@
 import React, {useRef, useEffect, useState} from 'react';
 import {StyleSheet, View, Pressable, Animated, Easing} from 'react-native';
-import {Drink as EventPayload} from './types';
-import Drink, {DrinkType, Size, dimensions} from '../Drink';
+import {
+  Image as DrinkImage,
+  DrinkType,
+  DrinkSize,
+  Drink as EventPayload,
+  dimensions,
+} from '../Drink';
 import Text from '../Text';
 import colors from '../../lib/colors';
 
@@ -46,7 +51,7 @@ const Control = ({abv, onPress, ounces, type}: ControlProps) => {
       onPressOut={() => setPressed(false)}
       style={styles.control}>
       <Text style={styles.controlTextSmall}>ABV: {abv}%</Text>
-      <Drink style={pressed ? styles.controlPressed : null} type={type} />
+      <DrinkImage style={pressed ? styles.controlPressed : null} type={type} />
       <Text style={styles.controlTextLarge}>
         {type.toUpperCase()}
         {' ('}
@@ -58,7 +63,7 @@ const Control = ({abv, onPress, ounces, type}: ControlProps) => {
 };
 
 const Controls = ({onPress}: Props) => {
-  const left = useRef(new Animated.Value(dimensions[Size.Small])).current;
+  const left = useRef(new Animated.Value(dimensions[DrinkSize.Small])).current;
   const right = useRef(new Animated.Value(0)).current;
   const fadeLeft = useRef(new Animated.Value(0)).current;
   const fadeCenter = useRef(new Animated.Value(0)).current;

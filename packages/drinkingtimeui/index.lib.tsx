@@ -4,6 +4,7 @@ export {default as Button} from './components/Button';
 export {
   Image as DrinkImage,
   ListItem as DrinkListItem,
+  List as DrinkList,
 } from './components/Drink';
 export {default as Info} from './components/Info';
 export {default as Link} from './components/Link';

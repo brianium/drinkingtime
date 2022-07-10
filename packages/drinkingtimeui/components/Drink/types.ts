@@ -4,6 +4,10 @@ export interface Drink {
   ounces: number;
 }
 
+export interface ConsumedDrink extends Drink {
+  consumedAt: Date;
+}
+
 export enum DrinkType {
   Beer = 'beer',
   Liquor = 'liquor',
